@@ -33,70 +33,7 @@ veritus-tech/
         └── ui/                 # Peças reutilizáveis (Logo, hook de animação)
 ```
 
-**Regra de manutenção:** cada seção tem seu próprio `.jsx` (estrutura) e `.css`
-(estilo). Para alterar **textos, contatos ou links**, edite apenas
-`src/data/content.js`: nenhum componente precisa ser tocado.
 
----
-
-## Rodando localmente
-
-```bash
-# 1. Instalar dependências (Node 18+)
-npm install
-
-# 2. Servidor de desenvolvimento
-npm run dev
-# → http://localhost:5173
-
-# 3. Build de produção (opcional, para testar)
-npm run build
-npm run preview
-```
-
----
-
-## Versionamento no GitHub
-
-```bash
-git init
-git add .
-git commit -m "feat: landing page inicial Veritus Tech"
-
-# Crie um repositório vazio no GitHub e conecte:
-git remote add origin https://github.com/SEU_USUARIO/veritus-tech.git
-git branch -M main
-git push -u origin main
-```
-
-Fluxo sugerido para atualizações futuras:
-
-```bash
-git checkout -b ajuste/nome-da-mudanca   # nova branch
-# ...edite os arquivos...
-git add .
-git commit -m "fix: descrição curta da mudança"
-git push origin ajuste/nome-da-mudanca
-# Abra um Pull Request no GitHub e faça merge na main
-```
-
----
-
-## Publicando na Vercel (plano gratuito)
-
-1. Acesse [vercel.com](https://vercel.com) e faça login com o GitHub.
-2. Clique em **Add New → Project** e importe o repositório `veritus-tech`.
-3. A Vercel detecta o Vite automaticamente:
-   - **Build Command:** `npm run build`
-   - **Output Directory:** `dist`
-4. Clique em **Deploy**. Pronto: cada `git push` na `main` publica
-   automaticamente uma nova versão.
-
-O projeto já vem otimizado para o plano gratuito: build minificado,
-chunk separado do React (`vendor`), fontes com `display=swap`,
-sem dependências além de React/ReactDOM.
-
----
 
 ## Responsividade
 
