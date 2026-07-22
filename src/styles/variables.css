@@ -1,0 +1,40 @@
+/* ============================================
+   VERITUS TECH: Design Tokens
+   Toda cor, fonte e espaçamento vem daqui.
+   Para mudar a identidade visual, edite só este arquivo.
+   ============================================ */
+
+:root {
+  /* Cores: fundos */
+  --bg-deep: #050d1a;        /* hero e contato (azul mais escuro) */
+  --bg-section: #0a1424;     /* seções intermediárias */
+  --bg-section-alt: #0d1930; /* variação sutil entre seções */
+  --bg-card: #101f38;        /* cartões */
+  --bg-card-hover: #142647;
+
+  /* Cores: texto */
+  --text-primary: #f2f6fb;
+  --text-secondary: #a8b8cd;
+  --text-muted: #6b7f99;
+
+  /* Cores: marca */
+  --accent: #6fc7f2;         /* azul claro Veritus */
+  --accent-strong: #62c3f0;  /* botão principal */
+  --accent-dark: #071018;    /* texto sobre botão claro */
+  --line: rgba(111, 199, 242, 0.14);   /* bordas sutis */
+  --line-strong: rgba(111, 199, 242, 0.3);
+
+  /* Tipografia */
+  --font-display: 'Sora', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Layout */
+  --container: 1120px;
+  --gutter: clamp(20px, 5vw, 40px); /* margem lateral segura em qualquer tela */
+  --radius: 12px;
+  --section-y: clamp(72px, 10vw, 120px);
+
+  /* Transições */
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
