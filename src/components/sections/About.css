@@ -1,0 +1,151 @@
+.about {
+  position: relative;
+  background: var(--bg-section);
+  padding: var(--section-y) 0;
+  overflow: hidden;
+}
+
+.about__summary {
+  display: grid;
+  gap: 18px;
+  margin-top: 38px;
+  max-width: 68ch;
+}
+
+.about__summary p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+/* Primeiro parágrafo em destaque: resume a empresa numa frase */
+.about__summary p:first-child {
+  font-size: clamp(1.05rem, 1.7vw, 1.22rem);
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.45;
+  letter-spacing: -0.02em;
+  max-width: 46ch;
+}
+
+/* ---------- Cartão do fundador ---------- */
+.founder {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: clamp(24px, 4vw, 40px);
+  align-items: start;
+  margin-top: 48px;
+  padding: clamp(26px, 4vw, 38px);
+  background: linear-gradient(150deg, #142747, #101f38);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.founder::before {
+  content: '';
+  position: absolute;
+  top: -90px;
+  right: -70px;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(111, 199, 242, 0.14), transparent 66%);
+  pointer-events: none;
+}
+
+.founder__photo {
+  position: relative;
+  flex: none;
+  width: clamp(132px, 20vw, 180px);
+  aspect-ratio: 1;
+  border-radius: 22px;
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  background: linear-gradient(160deg, rgba(111, 199, 242, 0.16), rgba(111, 199, 242, 0.03));
+  box-shadow: 0 22px 50px -26px rgba(0, 0, 0, 0.9), 0 0 34px -14px var(--glow);
+}
+
+/* Silhueta de fallback: fica no fundo do quadro e some sob a foto real.
+   z-index 0 (e não -1) para não cair atrás do fundo do próprio quadro. */
+.founder__photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(circle at 50% 34%, var(--line-strong) 0 15%, transparent 16%),
+    radial-gradient(ellipse 46% 30% at 50% 92%, var(--line-strong) 0 60%, transparent 61%);
+}
+
+/* object-position vem do componente (founder.photoPosition em content.js),
+   porque o enquadramento depende da foto que estiver no lugar. */
+.founder__photo img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.founder__role {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.founder__body h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.3rem;
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+}
+
+.founder__body p {
+  color: var(--text-secondary);
+  font-size: 0.94rem;
+  max-width: 58ch;
+}
+
+.founder__body p + p {
+  margin-top: 12px;
+}
+
+.founder__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.founder__tags li {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(111, 199, 242, 0.08);
+  border: 1px solid var(--line);
+}
+
+/* Empilha antes de a coluna de texto ficar estreita demais */
+@media (max-width: 700px) {
+  .founder {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .founder__photo {
+    width: clamp(120px, 42vw, 168px);
+  }
+}

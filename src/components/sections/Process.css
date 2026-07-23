@@ -1,58 +1,121 @@
 .process {
+  position: relative;
   background: var(--bg-section-alt);
   padding: var(--section-y) 0;
+  overflow: hidden;
 }
 
 .process__steps {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 22px;
-  margin-top: 48px;
-  counter-reset: step;
+  gap: 20px;
+  margin-top: 60px;
+}
+
+/* Linha que conecta as etapas, passando atrás dos marcadores */
+.process__steps::before {
+  content: '';
+  position: absolute;
+  top: 19px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--line-strong), var(--accent), var(--line-strong));
+  opacity: 0.45;
 }
 
 .step {
-  border-top: 2px solid var(--line-strong);
-  padding-top: 18px;
-  transition: border-color 0.3s var(--ease);
+  position: relative;
+  padding-top: 56px;
 }
 
-.step:hover {
-  border-top-color: var(--accent);
+.step__marker {
+  position: absolute;
+  top: 6px;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  /* fundo opaco para a linha não aparecer atravessando o número */
+  background: var(--bg-section-alt);
+  border: 1px solid var(--line-strong);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--accent);
+  transition: box-shadow 0.3s var(--ease), border-color 0.3s var(--ease),
+    background 0.3s var(--ease), color 0.3s var(--ease);
 }
 
-.step__number {
+.step:hover .step__marker {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--accent-dark);
+  box-shadow: 0 0 22px -4px var(--glow);
+}
+
+.step__label {
   display: block;
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.65rem;
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 10px;
+  color: var(--text-muted);
+  margin-bottom: 9px;
 }
 
 .step h3 {
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.02rem;
+  letter-spacing: -0.02em;
   margin-bottom: 8px;
 }
 
 .step p {
-  font-size: 0.85rem;
+  font-size: 0.86rem;
   color: var(--text-secondary);
 }
 
+/* Tablet: 2 colunas, sem linha (ela só faz sentido numa fileira única) */
 @media (max-width: 980px) {
   .process__steps {
     grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+
+  .process__steps::before {
+    display: none;
   }
 }
 
+/* Mobile: timeline vertical */
 @media (max-width: 560px) {
   .process__steps {
     grid-template-columns: 1fr;
-    gap: 26px;
+    gap: 6px;
+  }
+
+  .process__steps::before {
+    display: block;
+    top: 0;
+    bottom: 0;
+    left: 13px; /* centro do marcador de 28px */
+    right: auto;
+    width: 1px;
+    height: auto;
+    background: linear-gradient(180deg, var(--line-strong), var(--accent), transparent);
+  }
+
+  .step {
+    padding: 0 0 26px 46px;
+  }
+
+  .step__marker {
+    top: 0;
   }
 }

@@ -1,8 +1,7 @@
 import { useEffect } from 'react';
-import { nav, site } from '../../data/content.js';
+import { nav, navExtra, site } from '../../data/content.js';
+import { whatsappLink, externalLink } from '../../lib/whatsapp.js';
 import './MobileMenu.css';
-
-const whatsappLink = `https://wa.me/${site.whatsappNumber}`;
 
 /**
  * Menu mobile em tela cheia.
@@ -10,6 +9,9 @@ const whatsappLink = `https://wa.me/${site.whatsappNumber}`;
  * cria um containing block que quebra o position: fixed de elementos
  * internos e deixava o fundo transparente. Como componente independente,
  * o overlay cobre a tela inteira com fundo sólido garantido.
+ *
+ * Na vertical sobra espaço, então mostra os itens do menu desktop + os
+ * que não coubessem na barra do topo (navExtra).
  */
 export default function MobileMenu({ open, onClose }) {
   // Trava o scroll da página enquanto o menu está aberto
@@ -32,6 +34,7 @@ export default function MobileMenu({ open, onClose }) {
 
   return (
     <div
+      id="mobile-menu"
       className={`mobile-menu ${open ? 'is-open' : ''}`}
       role="dialog"
       aria-modal="true"
@@ -39,20 +42,22 @@ export default function MobileMenu({ open, onClose }) {
       aria-hidden={!open}
     >
       <nav className="mobile-menu__nav">
-        {nav.map((item) => (
+        {[...nav, ...navExtra].map((item) => (
           <a key={item.href} href={item.href} onClick={onClose}>
             {item.label}
           </a>
         ))}
+
         <a
+          {...externalLink}
           href={whatsappLink}
-          target="_blank"
-          rel="noopener noreferrer"
           className="btn btn--primary"
           onClick={onClose}
         >
           Falar no WhatsApp
         </a>
+
+        <p className="mobile-menu__foot">{site.whatsappDisplay}</p>
       </nav>
     </div>
   );

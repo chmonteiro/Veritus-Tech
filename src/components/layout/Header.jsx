@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import Logo from '../ui/Logo.jsx';
+import { WhatsAppIcon } from '../ui/Icon.jsx';
 import MobileMenu from './MobileMenu.jsx';
-import { nav, site } from '../../data/content.js';
+import { nav } from '../../data/content.js';
+import { whatsappLink, externalLink } from '../../lib/whatsapp.js';
 import './Header.css';
-
-const whatsappLink = `https://wa.me/${site.whatsappNumber}`;
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -32,12 +32,8 @@ export default function Header() {
             ))}
           </nav>
 
-          <a
-            href={whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn--primary header__cta"
-          >
+          <a {...externalLink} href={whatsappLink} className="btn btn--primary header__cta">
+            <WhatsAppIcon size={15} />
             Falar no WhatsApp
           </a>
 
@@ -47,6 +43,7 @@ export default function Header() {
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'}
             aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
           >
             <span />
             <span />

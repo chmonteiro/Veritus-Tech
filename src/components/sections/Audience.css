@@ -1,82 +1,122 @@
+/* Fundo alterna com a seção "Quem somos", que vem logo antes */
 .audience {
-  background: var(--bg-section);
+  position: relative;
+  background: var(--bg-section-alt);
   padding: var(--section-y) 0;
+  overflow: hidden;
 }
 
 .audience__grid {
   display: grid;
-  grid-template-columns: 1fr 1.15fr;
-  gap: 22px;
-  margin-top: 44px;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 18px;
+  margin-top: 48px;
 }
 
 .audience__card {
+  position: relative;
   background: var(--bg-card);
   border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 30px 28px;
+  border-radius: var(--radius-lg);
+  padding: 32px 30px;
+  overflow: hidden;
+}
+
+.audience__card--main {
+  background: linear-gradient(150deg, #142747, #101f38);
+}
+
+.audience__card--main::before {
+  content: '';
+  position: absolute;
+  top: -70px;
+  right: -70px;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(111, 199, 242, 0.16), transparent 65%);
+  pointer-events: none;
 }
 
 .audience__card h3 {
   font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 1.15rem;
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
   margin-bottom: 12px;
 }
 
 .audience__card > p {
-  font-size: 0.9rem;
+  font-size: 0.92rem;
   color: var(--text-secondary);
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .audience__card ul {
   display: grid;
-  gap: 12px;
+  gap: 11px;
 }
 
 .audience__card li {
-  position: relative;
-  padding-left: 20px;
-  font-size: 0.9rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  font-size: 0.92rem;
   color: var(--text-secondary);
 }
 
-.audience__card li::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0.55em;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent);
+.audience__card li svg {
+  color: var(--accent);
+  flex: none;
+  margin-top: 4px;
 }
 
 .audience__card--pillars {
   display: grid;
-  gap: 24px;
+  gap: 22px;
   align-content: start;
+}
+
+.pillar {
+  position: relative;
+  padding-left: 18px;
+}
+
+.pillar::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 4px;
+  bottom: 4px;
+  width: 2px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, var(--accent), transparent);
 }
 
 .pillar__label {
   display: block;
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.66rem;
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--accent);
-  margin-bottom: 6px;
+  margin-bottom: 7px;
 }
 
 .pillar p {
-  font-size: 0.9rem;
+  font-size: 0.91rem;
   color: var(--text-secondary);
 }
 
 @media (max-width: 860px) {
   .audience__grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 420px) {
+  .audience__card {
+    padding: 26px 20px;
   }
 }
