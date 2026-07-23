@@ -169,12 +169,11 @@ export const about = {
   ],
   founder: {
     role: 'Fundador',
-    // TODO: preencher com o nome real do fundador.
-    name: 'Nome do fundador',
+    name: 'Matheus Peralta',
     /* A foto fica em public/fundador.jpg. Enquanto o arquivo não existir,
        o quadro mostra uma silhueta de fallback em vez de imagem quebrada. */
     photo: '/fundador.jpg',
-    photoAlt: 'Retrato do fundador da Veritus Tech',
+    photoAlt: 'Matheus Peralta, fundador da Veritus Tech',
     /* A foto atual é 400x400 e o quadro é quadrado, então nada é cortado e
        esta linha não muda nada. Ela só passa a importar se a foto for
        trocada por uma retangular: aí 'center top' preserva o rosto. */
