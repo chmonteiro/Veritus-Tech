@@ -1,57 +1,116 @@
 .contact {
   position: relative;
-  background: radial-gradient(
-      1000px 500px at 90% 0%,
-      rgba(30, 80, 160, 0.3),
-      transparent 60%
-    ),
-    var(--bg-deep);
-  padding: var(--section-y) 0;
   overflow: hidden;
+  padding: var(--section-y) 0;
+  background: radial-gradient(900px 520px at 82% 0%, rgba(41, 120, 205, 0.3), transparent 62%),
+    var(--bg-deep);
+}
+
+.contact__card {
+  position: relative;
+  border-radius: 26px;
+  overflow: hidden;
+  background: linear-gradient(160deg, rgba(23, 44, 80, 0.9), rgba(10, 20, 36, 0.94));
+  border: 1px solid var(--line-strong);
+  box-shadow: 0 50px 100px -50px rgba(0, 0, 0, 0.95);
+  padding: clamp(32px, 5vw, 58px);
+}
+
+.contact__card::before {
+  content: '';
+  position: absolute;
+  top: -120px;
+  left: -80px;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(111, 199, 242, 0.16), transparent 65%);
+  pointer-events: none;
+}
+
+.contact__inner {
+  position: relative;
+  z-index: 1;
+}
+
+.contact__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.8rem, 3.6vw, 2.7rem);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  max-width: 20ch;
+}
+
+.contact__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
+  margin-top: 30px;
+  align-items: center;
+}
+
+.contact__note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.84rem;
+  color: var(--text-muted);
+}
+
+.contact__note svg {
+  color: var(--accent);
+  flex: none;
 }
 
 .contact__channels {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-top: 44px;
+  gap: 14px;
+  margin-top: 38px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
 }
 
 .channel {
   display: flex;
   align-items: center;
   gap: 14px;
-  background: var(--bg-card);
+  background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  padding: 18px 20px;
-  transition: border-color 0.3s var(--ease), transform 0.3s var(--ease);
+  padding: 16px 18px;
   min-width: 0; /* impede que texto longo estoure o grid */
+  transition: border-color 0.3s var(--ease), transform 0.3s var(--ease),
+    background 0.3s var(--ease);
 }
 
 .channel:hover {
   border-color: var(--line-strong);
   transform: translateY(-3px);
+  background: rgba(111, 199, 242, 0.06);
 }
 
 .channel__icon {
-  flex-shrink: 0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
-  border-radius: 8px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  background: rgba(111, 199, 242, 0.1);
   border: 1px solid var(--line-strong);
   color: var(--accent);
 }
 
 .channel small {
   display: block;
-  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  font-size: 0.63rem;
   color: var(--text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.14em;
+  margin-bottom: 2px;
 }
 
 .channel strong {
@@ -61,16 +120,18 @@
   overflow-wrap: anywhere; /* e-mail longo quebra sem invadir */
 }
 
-.contact__cta {
-  margin-top: 30px;
-}
-
 @media (max-width: 860px) {
   .contact__channels {
     grid-template-columns: 1fr;
   }
 
-  .contact__cta {
+  .contact__actions .btn {
     width: 100%;
+  }
+}
+
+@media (max-width: 620px) {
+  .contact__card {
+    border-radius: 20px;
   }
 }

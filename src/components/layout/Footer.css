@@ -1,18 +1,52 @@
+/* --safe-cta é definido em StickyCta.css e reserva espaço para a barra
+   fixa do mobile, que senão cobriria o rodapé. */
 .footer {
   border-top: 1px solid var(--line);
   background: var(--bg-deep);
-  padding: 28px 0;
+  padding: 34px 0 calc(34px + var(--safe-cta, 0px));
 }
 
 .footer__inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 18px;
   flex-wrap: wrap;
+}
+
+.footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  /* compensa o padding dos links para o primeiro alinhar com a logo */
+  margin-inline: -12px;
+}
+
+/* Padding generoso: sem ele o alvo de toque fica em 21px de altura */
+.footer__links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 12px;
+  border-radius: 8px;
+  transition: color 0.2s, background 0.2s;
+}
+
+.footer__links a:hover {
+  color: var(--accent);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .footer__tagline {
   font-size: 0.82rem;
   color: var(--text-muted);
+}
+
+@media (max-width: 620px) {
+  .footer__inner {
+    justify-content: flex-start;
+    gap: 10px;
+  }
 }

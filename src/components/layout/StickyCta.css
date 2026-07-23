@@ -1,0 +1,67 @@
+/* Barra fixa no rodapé (mobile e tablet) */
+.sticky-cta {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 80;
+  display: none; /* ligada pelo media query abaixo */
+  gap: 10px;
+  padding: 12px var(--gutter) calc(12px + env(safe-area-inset-bottom));
+  background: rgba(5, 13, 26, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-top: 1px solid var(--line);
+  transform: translateY(110%);
+  transition: transform 0.4s var(--ease);
+}
+
+.sticky-cta.is-visible {
+  transform: translateY(0);
+}
+
+.sticky-cta .btn {
+  flex: 1;
+}
+
+.sticky-cta .btn--ghost {
+  flex: 0 0 auto;
+  padding-inline: 18px;
+}
+
+/* Botão redondo (desktop) */
+.wa-float {
+  position: fixed;
+  right: 20px;
+  bottom: 24px;
+  z-index: 70;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #7fd2f7, var(--accent-strong));
+  color: var(--accent-dark);
+  box-shadow: 0 14px 34px -10px var(--glow), 0 1px 0 rgba(255, 255, 255, 0.4) inset;
+  transition: transform 0.3s var(--ease);
+}
+
+.wa-float:hover {
+  transform: scale(1.07);
+}
+
+/* Acompanha o hamburguer: onde não há CTA no header, a barra fixa assume.
+   --safe-cta reserva espaço no rodapé para a barra não cobrir conteúdo. */
+@media (max-width: 1024px) {
+  .sticky-cta {
+    display: flex;
+  }
+
+  body {
+    --safe-cta: 76px;
+  }
+
+  .wa-float {
+    display: none;
+  }
+}

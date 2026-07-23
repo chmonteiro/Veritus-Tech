@@ -1,49 +1,100 @@
-import { hero, site } from '../../data/content.js';
+import { hero } from '../../data/content.js';
+import Icon, { WhatsAppIcon } from '../ui/Icon.jsx';
+import { whatsappLink, externalLink } from '../../lib/whatsapp.js';
 import './Hero.css';
-
-const whatsappLink = `https://wa.me/${site.whatsappNumber}`;
 
 export default function Hero() {
   return (
     <section className="hero" id="topo">
-      {/* Circuito decorativo (fundo) */}
-      <svg
-        className="hero__circuit"
-        viewBox="0 0 400 300"
-        aria-hidden="true"
-        preserveAspectRatio="xMaxYMin meet"
-      >
-        <g stroke="currentColor" strokeWidth="1.5" fill="none">
-          <path d="M400 40 H300 L260 80 H180" />
-          <path d="M400 100 H320 L280 140 H220" />
-          <path d="M340 0 V60 L300 100" />
-          <circle cx="180" cy="80" r="4" fill="currentColor" />
-          <circle cx="220" cy="140" r="4" fill="currentColor" />
-          <circle cx="300" cy="100" r="4" fill="currentColor" />
-        </g>
-      </svg>
+      <div className="grid-bg" aria-hidden="true" />
+      <div className="noise" aria-hidden="true" />
+      <div className="hero__glow" aria-hidden="true" />
 
       <div className="container hero__inner">
-        <p className="eyebrow">{hero.eyebrow}</p>
-        <h1 className="hero__title">{hero.title}</h1>
-        <p className="hero__description">{hero.description}</p>
+        <div>
+          <p className="hero__badge">
+            <i className="pulse" aria-hidden="true" />
+            {hero.eyebrow}
+          </p>
 
-        <div className="hero__actions">
-          <a
-            href={whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn--primary"
-          >
-            {hero.ctaPrimary}
-          </a>
-          <a href="#solucoes" className="btn btn--ghost">
-            {hero.ctaSecondary}
-          </a>
+          <h1 className="hero__title">
+            {hero.title} <span className="hero__title-accent">{hero.titleAccent}</span>
+          </h1>
+
+          <p className="hero__description">{hero.description}</p>
+
+          <div className="hero__actions">
+            <a {...externalLink} href={whatsappLink} className="btn btn--primary btn--lg">
+              <WhatsAppIcon />
+              {hero.ctaPrimary}
+            </a>
+            <a href="#solucoes" className="btn btn--ghost btn--lg">
+              {hero.ctaSecondary}
+            </a>
+          </div>
+
+          <p className="hero__reassure">
+            <Icon name="check" size={15} strokeWidth={2.4} />
+            {hero.reassurance}
+          </p>
+
+          <ul className="hero__trust">
+            {hero.trust.map((item) => (
+              <li key={item}>
+                <Icon name="check" size={14} strokeWidth={2.4} />
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
 
-        <p className="hero__footnote">{hero.footnote}</p>
+        <HeroPanel />
       </div>
     </section>
+  );
+}
+
+/**
+ * Painel lateral: mostra, em forma de console, o ambiente que o cliente
+ * passa a ter. É o elemento que diferencia a página de um template genérico.
+ */
+function HeroPanel() {
+  const { panel } = hero;
+
+  return (
+    <aside className="panel" aria-label="Resumo do que é entregue">
+      <div className="panel__bar">
+        <span className="panel__dots" aria-hidden="true">
+          <i />
+          <i />
+          <i />
+        </span>
+        <span className="panel__title">{panel.title}</span>
+        <span className="panel__status">
+          <i className="pulse" aria-hidden="true" />
+          {panel.status}
+        </span>
+      </div>
+
+      <div className="panel__body">
+        {panel.lines.map((line) => (
+          <div className="pline" key={line.title}>
+            <span className="pline__ic" aria-hidden="true">
+              <Icon name={line.icon} size={15} strokeWidth={2} />
+            </span>
+            <span className="pline__txt">
+              <strong>{line.title}</strong>
+              <small>{line.detail}</small>
+            </span>
+            <span className="pline__tag">{line.tag}</span>
+          </div>
+        ))}
+      </div>
+
+      <div className="panel__foot">
+        <small>{panel.footLabel}</small>
+        <strong>{panel.footValue}</strong>
+      </div>
+    </aside>
   );
 }

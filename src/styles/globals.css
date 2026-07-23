@@ -38,10 +38,29 @@ button {
   cursor: pointer;
   border: none;
   background: none;
+  color: inherit;
 }
 
-ul {
+ul,
+ol {
   list-style: none;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-dark);
+}
+
+/* Foco visível em tudo que é operável pelo teclado */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* O header é fixo: sem isso o link de âncora para embaixo dele */
+section[id] {
+  scroll-margin-top: calc(var(--header-h) + 16px);
 }
 
 /* ---------- Utilitários ---------- */
@@ -56,62 +75,84 @@ ul {
 
 /* Rótulo pequeno acima dos títulos ("O QUE VOCÊ ENCONTRA...") */
 .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 600;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--accent);
-  margin-bottom: 16px;
+  margin-bottom: 18px;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 22px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent));
 }
 
 /* Títulos de seção */
+.section-head {
+  max-width: 64ch;
+}
+
 .section-title {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(1.7rem, 4vw, 2.6rem);
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-  max-width: 18ch;
+  font-size: clamp(1.75rem, 3.6vw, 2.7rem);
+  line-height: 1.13;
+  letter-spacing: -0.03em;
+  max-width: 20ch;
 }
 
 .section-lead {
   margin-top: 18px;
   color: var(--text-secondary);
-  max-width: 52ch;
+  max-width: 56ch;
+  font-size: 1rem;
 }
 
 /* Botões */
 .btn {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 14px 26px;
-  border-radius: 10px;
+  gap: 9px;
+  padding: 15px 26px;
+  border-radius: 11px;
   font-weight: 600;
   font-size: 0.95rem;
+  line-height: 1;
+  min-height: 48px; /* alvo de toque confortável no celular */
   transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease),
-    background 0.25s var(--ease);
+    background 0.25s var(--ease), border-color 0.25s var(--ease), color 0.25s var(--ease);
 }
 
-.btn:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
+.btn svg {
+  flex: none;
 }
 
 .btn--primary {
-  background: var(--accent-strong);
+  background: linear-gradient(180deg, #7fd2f7, var(--accent-strong));
   color: var(--accent-dark);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.45) inset, 0 8px 24px -8px var(--glow);
 }
 
 .btn--primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(98, 195, 240, 0.35);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset, 0 14px 34px -8px var(--glow);
+}
+
+.btn--primary:active {
+  transform: translateY(0);
 }
 
 .btn--ghost {
-  background: transparent;
+  background: rgba(255, 255, 255, 0.02);
   color: var(--text-primary);
   border: 1px solid var(--line-strong);
 }
@@ -119,13 +160,76 @@ ul {
 .btn--ghost:hover {
   border-color: var(--accent);
   color: var(--accent);
+  background: rgba(111, 199, 242, 0.06);
+}
+
+.btn--lg {
+  padding: 17px 32px;
+  font-size: 1rem;
+  min-height: 54px;
+}
+
+/* ---------- Atmosfera de fundo ---------- */
+
+/* Grade tipo blueprint, esmaecida nas bordas */
+.grid-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(var(--line-hair) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line-hair) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(120% 80% at 50% 0%, #000 20%, transparent 75%);
+  mask-image: radial-gradient(120% 80% at 50% 0%, #000 20%, transparent 75%);
+}
+
+/* Ruído sutil: tira o aspecto "chapado" do fundo escuro */
+.noise {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Ponto pulsante de "status ativo" */
+.pulse {
+  position: relative;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex: none;
+}
+
+.pulse::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px solid var(--accent);
+  opacity: 0.55;
+  animation: ping 2.2s var(--ease) infinite;
+}
+
+@keyframes ping {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.7;
+  }
+  80%,
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
 }
 
 /* Animação de entrada das seções */
 @keyframes fade-up {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(26px);
   }
   to {
     opacity: 1;
@@ -138,10 +242,53 @@ ul {
 }
 
 .reveal.is-visible {
-  animation: fade-up 0.7s var(--ease) forwards;
+  animation: fade-up 0.75s var(--ease) forwards;
 }
 
-/* Acessibilidade: respeita quem prefere menos movimento */
+/* ============================================
+   BLINDAGEM MOBILE
+   Nada pode estourar a caixa nem invadir o vizinho.
+   ============================================ */
+
+/* Palavra longa (URL, e-mail, nome técnico) nunca alarga o pai */
+h1,
+h2,
+h3,
+p,
+li,
+summary,
+strong,
+small,
+span {
+  overflow-wrap: break-word;
+}
+
+.section-title,
+.hero__title,
+.contact__title {
+  text-wrap: balance;
+}
+
+/* Filhos de flex só encolhem se puderem: sem isto o texto força a largura
+   do contêiner e estoura o grid. É a causa mais comum de "invadir espaço". */
+.pline__txt,
+.channel span,
+.faq__item summary,
+.hero__trust li,
+.founder__body {
+  min-width: 0;
+}
+
+@media (max-width: 620px) {
+  /* Títulos podem usar a largura toda no celular */
+  .section-title,
+  .hero__title,
+  .contact__title {
+    max-width: none;
+  }
+}
+
+/* ---------- Acessibilidade: respeita quem prefere menos movimento ---------- */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -153,5 +300,11 @@ ul {
   }
   .marquee__track {
     animation: none !important;
+  }
+  .pulse::after {
+    animation: none;
+  }
+  * {
+    transition-duration: 0.01ms !important;
   }
 }
