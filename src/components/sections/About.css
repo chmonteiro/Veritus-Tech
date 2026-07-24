@@ -58,13 +58,32 @@
 .founder__photo {
   position: relative;
   flex: none;
-  width: clamp(132px, 20vw, 180px);
+  /* Teto de 200px: o arquivo tem 400px de lado, e acima disso a foto perde
+     nitidez em tela 2x. Trocar a foto por uma maior é o que permite crescer. */
+  width: clamp(140px, 21vw, 200px);
   aspect-ratio: 1;
-  border-radius: 22px;
+  border-radius: var(--radius-lg);
   overflow: hidden;
   border: 1px solid var(--line-strong);
   background: linear-gradient(160deg, rgba(111, 199, 242, 0.16), rgba(111, 199, 242, 0.03));
-  box-shadow: 0 22px 50px -26px rgba(0, 0, 0, 0.9), 0 0 34px -14px var(--glow);
+  box-shadow: 0 26px 56px -28px rgba(0, 0, 0, 0.92), 0 0 40px -16px var(--glow);
+  /* Moldura de fio deslocada, no mesmo vocabulário das bordas hairline
+     que aparecem no resto do site. Fica fora do overflow: hidden, então
+     não corta a foto. */
+  outline: 1px solid var(--line);
+  outline-offset: 10px;
+}
+
+/* Assenta a base da foto no fundo escuro do cartão. Sem isto ela fica
+   recortada e colada por cima, em vez de pertencer ao cartão.
+   Só a metade de baixo escurece, para não tocar no rosto. */
+.founder__photo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent 52%, rgba(5, 13, 26, 0.34));
 }
 
 /* Silhueta de fallback: fica no fundo do quadro e some sob a foto real.
@@ -78,8 +97,11 @@
     radial-gradient(ellipse 46% 30% at 50% 92%, var(--line-strong) 0 60%, transparent 61%);
 }
 
-/* object-position vem do componente (founder.photoPosition em content.js),
-   porque o enquadramento depende da foto que estiver no lugar. */
+/* O recorte vem do componente (photoFocus e photoZoom em content.js), porque
+   depende de onde o rosto está na foto que estiver no lugar.
+   A ordem importa: scale primeiro, ancorado no rosto pelo transform-origin,
+   e só depois o translateY, que desce o rosto para o terço superior do
+   quadro. Centralizado ele fica alto demais e sobra queixo. */
 .founder__photo img {
   position: relative;
   z-index: 1;
@@ -87,6 +109,7 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  transform: translateY(12%) scale(var(--photo-zoom, 1));
 }
 
 .founder__role {
@@ -142,10 +165,11 @@
 @media (max-width: 700px) {
   .founder {
     grid-template-columns: 1fr;
-    gap: 22px;
+    gap: 26px; /* respiro extra: a moldura ocupa 11px além da foto */
   }
 
   .founder__photo {
-    width: clamp(120px, 42vw, 168px);
+    width: clamp(128px, 44vw, 176px);
+    outline-offset: 8px;
   }
 }
