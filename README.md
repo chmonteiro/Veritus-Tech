@@ -1,6 +1,6 @@
 # Veritus Tech: Landing Page
 
-Landing page da Veritus Tech (infraestrutura de TI), construída com **React + Vite**, totalmente responsiva (desktop e mobile) e otimizada para publicação gratuita na **Vercel**.
+Landing page da Veritus Tech (infraestrutura de TI), construída com **React + Vite**, totalmente responsiva (desktop e mobile)
 
 ---
 
