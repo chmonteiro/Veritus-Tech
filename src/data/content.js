@@ -10,7 +10,7 @@ export const site = {
   tagline: 'Soluções reais, resultados verdadeiros',
   whatsappNumber: '5511972021478', // usado no link wa.me
   whatsappDisplay: '(11) 97202-1478',
-  email: 'matheus.peralta25@hotmail.com',
+  email: 'veritustech@gmail.com',
   instagram: 'veritus_tech',
   // Mensagem que já vem digitada quando o cliente abre o WhatsApp.
   whatsappMessage:
@@ -168,16 +168,19 @@ export const about = {
     'O que muda é a forma de conduzir: diagnóstico antes de proposta, escopo acordado antes da execução e clareza em cada etapa. Nada de pacote fechado, nada de promessa irreal. Só o que garante estabilidade, segurança e desempenho no dia a dia.',
   ],
   founder: {
-    role: 'Fundador',
+    role: 'Fundador Veritus Tech',
     name: 'Matheus Peralta',
     /* A foto fica em public/fundador.jpg. Enquanto o arquivo não existir,
        o quadro mostra uma silhueta de fallback em vez de imagem quebrada. */
     photo: '/fundador.jpg',
     photoAlt: 'Matheus Peralta, fundador da Veritus Tech',
-    /* A foto atual é 400x400 e o quadro é quadrado, então nada é cortado e
-       esta linha não muda nada. Ela só passa a importar se a foto for
-       trocada por uma retangular: aí 'center top' preserva o rosto. */
-    photoPosition: 'center center',
+    /* A foto é um plano inteiro: sem aproximar, o rosto fica pequeno demais
+       para um cartão de fundador. Estes dois valores fazem o recorte.
+       photoFocus é onde o rosto está NA FOTO (x y, a partir do topo-esquerda);
+       photoZoom é o quanto aproximar. Ao trocar a foto, ajuste os dois.
+       Zoom acima de 2 começa a borrar, porque o arquivo tem 400px de lado. */
+    photoFocus: '47% 20%',
+    photoZoom: 1.6,
     bio: [
       'Formado em Sistemas de Informação pela FIAP, com 3 anos de experiência em desenvolvimento back-end. Trabalha com APIs REST, bancos de dados SQL e soluções escaláveis, com atuação em ambientes de automação industrial e RH-tech.',
       'Traz para a Veritus a disciplina de quem escreve software para produção: boas práticas de código, versionamento e metodologias ágeis. O objetivo é sempre o mesmo: qualidade técnica com impacto real no negócio.',

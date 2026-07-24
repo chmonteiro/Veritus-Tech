@@ -35,7 +35,10 @@ export default function About() {
                 width="180"
                 height="180"
                 loading="lazy"
-                style={{ objectPosition: founder.photoPosition }}
+                style={{
+                  transformOrigin: founder.photoFocus,
+                  '--photo-zoom': founder.photoZoom,
+                }}
                 onError={() => setPhotoFailed(true)}
               />
             )}
