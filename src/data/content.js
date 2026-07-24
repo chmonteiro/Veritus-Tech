@@ -10,7 +10,7 @@ export const site = {
   tagline: 'Soluções reais, resultados verdadeiros',
   whatsappNumber: '5511972021478', // usado no link wa.me
   whatsappDisplay: '(11) 97202-1478',
-  email: 'matheus.peralta25@hotmail.com',
+  email: 'veritustech@gmail.com',
   instagram: 'veritus_tech',
   // Mensagem que já vem digitada quando o cliente abre o WhatsApp.
   whatsappMessage:
