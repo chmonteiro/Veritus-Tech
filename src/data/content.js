@@ -168,7 +168,7 @@ export const about = {
     'O que muda é a forma de conduzir: diagnóstico antes de proposta, escopo acordado antes da execução e clareza em cada etapa. Nada de pacote fechado, nada de promessa irreal. Só o que garante estabilidade, segurança e desempenho no dia a dia.',
   ],
   founder: {
-    role: 'Fundador',
+    role: 'Fundador Veritus Tech',
     name: 'Matheus Peralta',
     /* A foto fica em public/fundador.jpg. Enquanto o arquivo não existir,
        o quadro mostra uma silhueta de fallback em vez de imagem quebrada. */
