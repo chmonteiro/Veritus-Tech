@@ -4,6 +4,22 @@ Landing page da Veritus Tech (infraestrutura de TI), construída com **React + V
 
 ---
 
+## Tecnologias
+
+| Camada | Ferramenta |
+| --- | --- |
+| Biblioteca de UI | React 18 |
+| Build e dev server | Vite 5 |
+| Estilo | CSS puro com design tokens (custom properties), sem framework |
+| Tipografia | Sora, Instrument Sans e JetBrains Mono (Google Fonts) |
+| Ícones | SVG próprio (`ui/Icon.jsx`) + logos de marca (`ui/TechLogo.jsx`) |
+| Deploy | Vercel |
+
+Sem dependências de runtime além de `react` e `react-dom`: todo o resto (grid,
+animações, menu, carrossel de valores) é HTML, CSS e JavaScript próprios.
+
+---
+
 ## Estrutura de pastas
 
 ```
@@ -32,16 +48,16 @@ veritus-tech/
         │   └── Footer.jsx / .css
         ├── sections/           # Uma dupla .jsx/.css por seção da página
         │   ├── Hero.jsx / .css           # Título + painel de status
-        │   ├── ValuesMarquee.jsx / .css  # Valores animados (loop infinito)
+        │   ├── ValuesMarquee.jsx / .css  # Faixa animada com os cinco valores
         │   ├── Solutions.jsx / .css      # Grid bento de 10 soluções
-        │   ├── Process.jsx / .css        # Timeline de 5 etapas
-        │   ├── About.jsx / .css          # Quem somos + cartão do fundador
+        │   ├── Values.jsx / .css         # Nossos Valores (destaque + 4 cards)
+        │   ├── About.jsx / .css          # Quem somos + card do fundador
         │   ├── Audience.jsx / .css       # Para quem + Missão/Visão
         │   ├── Faq.jsx / .css            # Dúvidas frequentes
         │   └── Contact.jsx / .css        # Canais de contato
         └── ui/
             ├── Logo.jsx
-            ├── Icon.jsx        # Conjunto de ícones, referenciado por nome
+            ├── Icon.jsx        # Ícones de traço, referenciados por nome
+            ├── TechLogo.jsx    # Logos oficiais da stack (MongoDB, React...)
             └── useReveal.js    # Hook de animação de entrada
 ```
-
