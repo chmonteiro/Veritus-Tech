@@ -198,14 +198,17 @@ export const about = {
       'Minha especialidade é o desenvolvimento backend: aplicações escaláveis, seguras e de alta performance. Atuo também no frontend, com a stack MERN (MongoDB, Express.js, React e Node.js) e Python, sempre aplicando boas práticas de arquitetura, qualidade de código e engenharia de software. No lado da infraestrutura, administro servidores, virtualizo ambientes e implemento projetos em nuvem e on-premise, o que me permite enxergar todo o ciclo de vida de uma solução: da arquitetura à implantação e operação.',
       'Como fundador, meu compromisso é claro: entregar soluções confiáveis e preparadas para crescer junto com o negócio dos meus clientes. Cada projeto é uma oportunidade de transformar ideias em resultados concretos.',
     ],
-    /* Stack principal com marca própria; infraestrutura como chips simples.
-       Os nomes dos ícones apontam para o conjunto em ui/Icon.jsx. */
+    /* Stack principal com o logo oficial de cada tecnologia (ui/TechLogo.jsx).
+       `color` é a cor da marca, revelada no hover; o logo fica neutro em
+       repouso. Express é preto na marca original, invisível no fundo escuro,
+       então usa o branco (como o próprio Express exibe sobre fundo escuro).
+       Infraestrutura fica como chips simples, sem logo. */
     stack: [
-      { name: 'MongoDB', icon: 'mongodb' },
-      { name: 'Express.js', icon: 'express' },
-      { name: 'React', icon: 'react' },
-      { name: 'Node.js', icon: 'node' },
-      { name: 'Python', icon: 'python' },
+      { name: 'MongoDB', logo: 'mongodb', color: '#47A248' },
+      { name: 'Express.js', logo: 'express', color: '#e8e8e8' },
+      { name: 'React', logo: 'react', color: '#61DAFB' },
+      { name: 'Node.js', logo: 'node', color: '#5FA04E' },
+      { name: 'Python', logo: 'python', color: '#3776AB' },
     ],
     infra: ['Docker', 'Linux', 'Nuvem', 'On-premise', 'APIs REST', 'Bancos SQL'],
   },

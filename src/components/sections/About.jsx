@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { about } from '../../data/content.js';
-import Icon from '../ui/Icon.jsx';
+import TechLogo from '../ui/TechLogo.jsx';
 import useReveal from '../ui/useReveal.js';
 import './About.css';
 
@@ -57,8 +57,8 @@ export default function About() {
               <span className="founder__stack-label">Stack principal</span>
               <ul className="founder__chips">
                 {founder.stack.map((tech) => (
-                  <li key={tech.name}>
-                    <Icon name={tech.icon} size={16} />
+                  <li key={tech.name} style={{ '--brand': tech.color }}>
+                    <TechLogo name={tech.logo} />
                     {tech.name}
                   </li>
                 ))}
