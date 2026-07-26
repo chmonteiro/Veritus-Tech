@@ -4,7 +4,7 @@ import './Footer.css';
 
 const footerLinks = [
   { label: 'Soluções', href: '#solucoes' },
-  { label: 'Processo', href: '#como-trabalhamos' },
+  { label: 'Valores', href: '#nossos-valores' },
   { label: 'Quem somos', href: '#quem-somos' },
   { label: 'Contato', href: '#contato' },
 ];

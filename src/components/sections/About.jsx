@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { about } from '../../data/content.js';
+import TechLogo from '../ui/TechLogo.jsx';
 import useReveal from '../ui/useReveal.js';
 import './About.css';
 
@@ -52,11 +53,26 @@ export default function About() {
               <p key={paragraph}>{paragraph}</p>
             ))}
 
-            <ul className="founder__tags">
-              {founder.tags.map((tag) => (
-                <li key={tag}>{tag}</li>
-              ))}
-            </ul>
+            <div className="founder__stack">
+              <span className="founder__stack-label">Stack principal</span>
+              <ul className="founder__chips">
+                {founder.stack.map((tech) => (
+                  <li key={tech.name} style={{ '--brand': tech.color }}>
+                    <TechLogo name={tech.logo} />
+                    {tech.name}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="founder__stack">
+              <span className="founder__stack-label">Infraestrutura &amp; práticas</span>
+              <ul className="founder__chips founder__chips--plain">
+                {founder.infra.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
           </figcaption>
         </figure>
       </div>

@@ -4,13 +4,13 @@ import StickyCta from './components/layout/StickyCta.jsx';
 import Hero from './components/sections/Hero.jsx';
 import ValuesMarquee from './components/sections/ValuesMarquee.jsx';
 import Solutions from './components/sections/Solutions.jsx';
-import Process from './components/sections/Process.jsx';
+import Values from './components/sections/Values.jsx';
 import About from './components/sections/About.jsx';
 import Audience from './components/sections/Audience.jsx';
 import Faq from './components/sections/Faq.jsx';
 import Contact from './components/sections/Contact.jsx';
 
-/* A ordem conta a história: o que fazemos, como fazemos, quem somos,
+/* A ordem conta a história: o que fazemos, no que acreditamos, quem somos,
    para quem, dúvidas e por fim o contato. Os fundos das seções alternam
    nessa mesma sequência, então mover uma seção pede conferir as cores. */
 export default function App() {
@@ -21,7 +21,7 @@ export default function App() {
         <Hero />
         <ValuesMarquee />
         <Solutions />
-        <Process />
+        <Values />
         <About />
         <Audience />
         <Faq />

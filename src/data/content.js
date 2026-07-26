@@ -21,7 +21,7 @@ export const site = {
    porque na vertical sobra espaço. No desktop a barra tem largura limitada. */
 export const nav = [
   { label: 'Soluções', href: '#solucoes' },
-  { label: 'Processo', href: '#como-trabalhamos' },
+  { label: 'Valores', href: '#nossos-valores' },
   { label: 'Quem somos', href: '#quem-somos' },
   { label: 'Para quem', href: '#para-quem' },
   { label: 'Contato', href: '#contato' },
@@ -58,13 +58,54 @@ export const hero = {
   },
 };
 
+/* Os cinco valores da marca, usados em dois lugares a partir daqui:
+   a faixa animada do topo (ValuesMarquee, usa title + detail) e a seção
+   "Nossos Valores" (usa title + icon + description; `featured` marca o
+   card de destaque em largura cheia). Fonte única, sem duplicar texto. */
 export const values = [
-  { title: 'Compromisso', detail: 'com cada cliente' },
-  { title: 'Transparência', detail: 'em cada etapa' },
-  { title: 'Segurança', detail: 'da informação' },
-  { title: 'Excelência', detail: 'técnica' },
-  { title: 'Inovação', detail: 'constante' },
+  {
+    title: 'Transparência',
+    detail: 'em cada etapa',
+    icon: 'eye',
+    featured: true,
+    description:
+      'Você sabe o que está sendo feito, quando e por quê. Sem letra miúda e sem surpresa na fatura: cada etapa é acordada antes de acontecer.',
+  },
+  {
+    title: 'Segurança',
+    detail: 'da informação',
+    icon: 'shield',
+    description:
+      'Cada decisão pensa primeiro em não te deixar exposto. Seus dados e sua operação protegidos por padrão.',
+  },
+  {
+    title: 'Excelência',
+    detail: 'técnica',
+    icon: 'award',
+    description:
+      'Nada entregue pela metade. O trabalho só termina quando funciona de verdade no seu dia a dia.',
+  },
+  {
+    title: 'Inovação',
+    detail: 'constante',
+    icon: 'bulb',
+    description:
+      'A ferramenta certa para o problema real, não o modismo da vez. Tecnologia a serviço do resultado.',
+  },
+  {
+    title: 'Compromisso',
+    detail: 'com cada cliente',
+    icon: 'pulse',
+    description:
+      'A gente não some depois da entrega. Suporte contínuo para manter tudo de pé enquanto você cresce.',
+  },
 ];
+
+export const valuesSection = {
+  eyebrow: 'Nossos valores',
+  title: 'Os cinco valores que sustentam cada entrega',
+  lead: 'Não é discurso de parede. É como a gente decide, prioriza e responde, inclusive quando algo dá errado.',
+};
 
 /* `wide` faz o cartão ocupar 2 colunas. São 8 cartões simples + 2 largos =
    12 unidades, que fecham exatamente 4 linhas no grid de 3 colunas.
@@ -130,34 +171,6 @@ export const solutions = {
   ],
 };
 
-export const process = {
-  eyebrow: 'Como trabalhamos',
-  title: 'Cinco etapas, do primeiro contato ao suporte',
-  lead: 'Cada projeto é conduzido com clareza e alinhamento: você sabe o que está sendo feito e por quê.',
-  steps: [
-    {
-      title: 'Primeiro contato',
-      description: 'Diagnóstico da estrutura que você tem hoje.',
-    },
-    {
-      title: 'Visita ao local',
-      description: 'Verificação presencial do ambiente e das condições reais.',
-    },
-    {
-      title: 'Planejamento',
-      description: 'Desenho da solução, com escopo e prioridades acordados.',
-    },
-    {
-      title: 'Implementação',
-      description: 'Execução acompanhada, sem surpresa no meio do caminho.',
-    },
-    {
-      title: 'Monitoramento',
-      description: 'Suporte contínuo para manter o ambiente estável.',
-    },
-  ],
-};
-
 export const about = {
   eyebrow: 'Quem somos',
   title: 'Uma parceira de TI, não só um suporte técnico',
@@ -182,10 +195,22 @@ export const about = {
     photoFocus: '47% 20%',
     photoZoom: 1.6,
     bio: [
-      'Formado em Sistemas de Informação pela FIAP, com 3 anos de experiência em desenvolvimento back-end. Trabalha com APIs REST, bancos de dados SQL e soluções escaláveis, com atuação em ambientes de automação industrial e RH-tech.',
-      'Traz para a Veritus a disciplina de quem escreve software para produção: boas práticas de código, versionamento e metodologias ágeis. O objetivo é sempre o mesmo: qualidade técnica com impacto real no negócio.',
+      'Minha especialidade é o desenvolvimento backend: aplicações escaláveis, seguras e de alta performance. Atuo também no frontend, com a stack MERN (MongoDB, Express.js, React e Node.js) e Python, sempre aplicando boas práticas de arquitetura, qualidade de código e engenharia de software. No lado da infraestrutura, administro servidores, virtualizo ambientes e implemento projetos em nuvem e on-premise, o que me permite enxergar todo o ciclo de vida de uma solução: da arquitetura à implantação e operação.',
+      'Como fundador, meu compromisso é claro: entregar soluções confiáveis e preparadas para crescer junto com o negócio dos meus clientes. Cada projeto é uma oportunidade de transformar ideias em resultados concretos.',
     ],
-    tags: ['APIs REST', 'Bancos SQL', 'Automação industrial', 'RH-tech'],
+    /* Stack principal com o logo oficial de cada tecnologia (ui/TechLogo.jsx).
+       `color` é a cor da marca, revelada no hover; o logo fica neutro em
+       repouso. Express é preto na marca original, invisível no fundo escuro,
+       então usa o branco (como o próprio Express exibe sobre fundo escuro).
+       Infraestrutura fica como chips simples, sem logo. */
+    stack: [
+      { name: 'MongoDB', logo: 'mongodb', color: '#47A248' },
+      { name: 'Express.js', logo: 'express', color: '#e8e8e8' },
+      { name: 'React', logo: 'react', color: '#61DAFB' },
+      { name: 'Node.js', logo: 'node', color: '#5FA04E' },
+      { name: 'Python', logo: 'python', color: '#3776AB' },
+    ],
+    infra: ['Docker', 'Linux', 'Nuvem', 'On-premise', 'APIs REST', 'Bancos SQL'],
   },
 };
 
