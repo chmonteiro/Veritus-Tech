@@ -143,24 +143,63 @@
   margin-top: 12px;
 }
 
-.founder__tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+.founder__stack {
   margin-top: 20px;
 }
 
-.founder__tags li {
+.founder__stack + .founder__stack {
+  margin-top: 16px;
+}
+
+.founder__stack-label {
+  display: block;
   font-family: var(--font-mono);
-  font-size: 0.66rem;
+  font-size: 0.62rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.founder__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Stack principal: chip com marca da tecnologia. Sem uppercase, senão
+   quebra a grafia própria (Node.js, Express.js). */
+.founder__chips li {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
   color: var(--accent);
   padding: 7px 12px;
   border-radius: 999px;
   background: rgba(111, 199, 242, 0.08);
   border: 1px solid var(--line);
+}
+
+.founder__chips svg {
+  flex: none;
+}
+
+/* Infraestrutura: chips mais discretos, com ponto no lugar da marca */
+.founder__chips--plain li {
+  color: var(--text-secondary);
+}
+
+.founder__chips--plain li::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex: none;
 }
 
 /* Mobile: empilha antes de a coluna de texto ficar estreita demais, e vira
@@ -184,7 +223,7 @@
     margin-inline: auto;
   }
 
-  .founder__tags {
+  .founder__chips {
     justify-content: center;
   }
 }

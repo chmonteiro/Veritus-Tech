@@ -67,6 +67,57 @@ const paths = {
   phone: (
     <path d="M6.5 3h3l1.5 4-2 1.5a12 12 0 0 0 5.5 5.5L16 12l4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 3 6.2 2 2 0 0 1 5 4h1.5Z" />
   ),
+
+  // Valores da marca
+  eye: (
+    <>
+      <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z" />
+      <circle cx="12" cy="12" r="3" />
+    </>
+  ),
+  award: (
+    <>
+      <circle cx="12" cy="8" r="5" />
+      <path d="M8.5 12.5 7 21l5-2.5L17 21l-1.5-8.5" />
+    </>
+  ),
+  bulb: (
+    <path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.3 1 2.5h6c0-1.2.3-1.8 1-2.5A6 6 0 0 0 12 3Z" />
+  ),
+  pulse: <path d="M2 12h4l3 8 4-16 3 8h6" />,
+
+  // Marcas da stack do fundador (versões monocromáticas, na cor do tema)
+  mongodb: (
+    <>
+      <path d="M12 2c3 3 5 6 5 10 0 3.6-2.2 6.6-5 8-2.8-1.4-5-4.4-5-8 0-4 2-7 5-10Z" />
+      <path d="M12 4.5v16" />
+    </>
+  ),
+  express: (
+    <>
+      <circle cx="5" cy="12" r="2" />
+      <circle cx="19" cy="6" r="2" />
+      <circle cx="19" cy="18" r="2" />
+      <path d="M7 12h4l6-5M11 12l6 5" />
+    </>
+  ),
+  react: (
+    <>
+      <circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none" />
+      <ellipse cx="12" cy="12" rx="10" ry="3.8" />
+      <ellipse cx="12" cy="12" rx="10" ry="3.8" transform="rotate(60 12 12)" />
+      <ellipse cx="12" cy="12" rx="10" ry="3.8" transform="rotate(120 12 12)" />
+    </>
+  ),
+  node: <path d="M12 2.5 20 7v10l-8 4.5L4 17V7Z" />,
+  python: (
+    <>
+      <path d="M8 4.5a2.5 2.5 0 0 1 2.5-2.5H13a2.5 2.5 0 0 1 2.5 2.5V9a2 2 0 0 1-2 2H9a3 3 0 0 0-3 3v.5" />
+      <path d="M16 19.5a2.5 2.5 0 0 1-2.5 2.5H11a2.5 2.5 0 0 1-2.5-2.5V15a2 2 0 0 1 2-2h4a3 3 0 0 0 3-3v-.5" />
+      <circle cx="10" cy="5.5" r=".6" fill="currentColor" stroke="none" />
+      <circle cx="14" cy="18.5" r=".6" fill="currentColor" stroke="none" />
+    </>
+  ),
 };
 
 export default function Icon({ name, size = 19, strokeWidth = 1.8 }) {
