@@ -11,16 +11,28 @@
   mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
 }
 
+/* Conjunto de referência: mede a largura de um ciclo sem aparecer nem
+   ocupar espaço no fluxo. Mesmo gap do track, senão a medida sai errada. */
+.marquee__measure {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  gap: 52px;
+  visibility: hidden;
+  pointer-events: none;
+}
+
 .marquee__track {
   display: flex;
   align-items: center;
   gap: 52px;
   width: max-content;
-  animation: marquee-scroll 34s linear infinite;
-}
-
-.marquee:hover .marquee__track {
-  animation-play-state: paused;
+  /* A duração vem do componente (--marquee-duration), calculada para manter
+     a velocidade constante. Sem pausa no hover: o fluxo nunca trava. */
+  animation: marquee-scroll var(--marquee-duration, 40s) linear infinite;
+  will-change: transform;
 }
 
 .marquee__item {
@@ -54,19 +66,22 @@
   flex: none;
 }
 
+/* translate3d mantém a animação na GPU (composição), mais fluida que
+   translateX puro. As duas metades do track são idênticas, então -50%
+   fecha o ciclo sem emenda. */
 @keyframes marquee-scroll {
   from {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
   to {
-    /* metade da largura = uma volta completa da lista original */
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
 @media (max-width: 420px) {
   .marquee__track,
-  .marquee__item {
+  .marquee__item,
+  .marquee__measure {
     gap: 36px;
   }
 }
