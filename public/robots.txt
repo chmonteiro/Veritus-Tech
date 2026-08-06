@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://veritustech.com.br/sitemap.xml
+Sitemap: https://veritus-tech.vercel.app/sitemap.xml

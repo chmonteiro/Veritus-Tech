@@ -8,10 +8,10 @@
 export const site = {
   name: 'Veritus Tech',
   tagline: 'Soluções reais, resultados verdadeiros',
-  // TODO: trocar pelo domínio real após o deploy (usado no rodapé de SEO).
-  // Os mesmos dados aparecem estáticos em index.html (canonical, og:url,
-  // JSON-LD): ao definir o domínio, atualize os dois lugares.
-  url: 'https://veritustech.com.br',
+  // Domínio de produção. Os mesmos dados aparecem estáticos em index.html
+  // (canonical, og:url, JSON-LD) e em public/robots.txt e sitemap.xml.
+  // Ao migrar para um domínio próprio, atualize todos esses lugares.
+  url: 'https://veritus-tech.vercel.app',
   whatsappNumber: '5511972021478', // usado no link wa.me
   whatsappDisplay: '(11) 97202-1478',
   email: 'veritustech@gmail.com',
