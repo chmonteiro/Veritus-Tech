@@ -53,11 +53,9 @@
   max-width: 15ch;
 }
 
+/* Destaque em cor sólida (accent da marca), sem degradê. */
 .hero__title-accent {
-  background: linear-gradient(100deg, #8fd8fa, #62c3f0 55%, #3f9fd0);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--accent);
 }
 
 .hero__description {
