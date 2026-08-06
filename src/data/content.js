@@ -10,7 +10,7 @@ export const site = {
   tagline: 'Soluções reais, resultados verdadeiros',
   // TODO: trocar pelo domínio real após o deploy (usado no rodapé de SEO).
   // Os mesmos dados aparecem estáticos em index.html (canonical, og:url,
-  // JSON-LD) — ao definir o domínio, atualize os dois lugares.
+  // JSON-LD): ao definir o domínio, atualize os dois lugares.
   url: 'https://veritustech.com.br',
   whatsappNumber: '5511972021478', // usado no link wa.me
   whatsappDisplay: '(11) 97202-1478',
@@ -24,7 +24,7 @@ export const site = {
 /* Perfil de SEO da empresa, exibido no bloco discreto do rodapé.
    É conteúdo real e rastreável pelo Google (não texto oculto de spam):
    reforça as palavras-chave e o contexto local de forma honesta.
-   `region` é inferido do DDD 11 (São Paulo) — confirmar antes de publicar. */
+   `region` é inferido do DDD 11 (São Paulo), confirmar antes de publicar. */
 export const seo = {
   label: 'SEO',
   heading: 'Veritus Tech: infraestrutura de TI e desenvolvimento web',

@@ -35,7 +35,7 @@
   transform: translateY(-4px);
   border-color: var(--line-strong);
   background: var(--bg-card-hover);
-  box-shadow: 0 22px 44px -28px rgba(0, 0, 0, 0.9);
+  box-shadow: 0 22px 44px -28px rgba(3, 10, 24, 0.9);
 }
 
 .value:hover::before {

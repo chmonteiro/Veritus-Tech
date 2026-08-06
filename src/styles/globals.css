@@ -269,6 +269,11 @@ span {
   text-wrap: balance;
 }
 
+/* Evita palavra órfã (uma sozinha na última linha) nos parágrafos. */
+p {
+  text-wrap: pretty;
+}
+
 /* Filhos de flex só encolhem se puderem: sem isto o texto força a largura
    do contêiner e estoura o grid. É a causa mais comum de "invadir espaço". */
 .pline__txt,

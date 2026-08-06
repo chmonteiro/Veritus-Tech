@@ -68,7 +68,7 @@
   overflow: hidden;
   border: 1px solid var(--line-strong);
   background: linear-gradient(160deg, rgba(111, 199, 242, 0.16), rgba(111, 199, 242, 0.03));
-  box-shadow: 0 26px 56px -28px rgba(0, 0, 0, 0.92), 0 0 40px -16px var(--glow);
+  box-shadow: 0 26px 56px -28px rgba(3, 10, 24, 0.92), 0 0 40px -16px var(--glow);
   /* Moldura de fio deslocada, no mesmo vocabulário das bordas hairline
      que aparecem no resto do site. Fica fora do overflow: hidden, então
      não corta a foto. */
