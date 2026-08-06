@@ -8,6 +8,10 @@
 export const site = {
   name: 'Veritus Tech',
   tagline: 'Soluções reais, resultados verdadeiros',
+  // TODO: trocar pelo domínio real após o deploy (usado no rodapé de SEO).
+  // Os mesmos dados aparecem estáticos em index.html (canonical, og:url,
+  // JSON-LD) — ao definir o domínio, atualize os dois lugares.
+  url: 'https://veritustech.com.br',
   whatsappNumber: '5511972021478', // usado no link wa.me
   whatsappDisplay: '(11) 97202-1478',
   email: 'veritustech@gmail.com',
@@ -15,6 +19,27 @@ export const site = {
   // Mensagem que já vem digitada quando o cliente abre o WhatsApp.
   whatsappMessage:
     'Olá! Vim pelo site da Veritus Tech e gostaria de falar sobre a infraestrutura de TI da minha empresa.',
+};
+
+/* Perfil de SEO da empresa, exibido no bloco discreto do rodapé.
+   É conteúdo real e rastreável pelo Google (não texto oculto de spam):
+   reforça as palavras-chave e o contexto local de forma honesta.
+   `region` é inferido do DDD 11 (São Paulo) — confirmar antes de publicar. */
+export const seo = {
+  label: 'SEO',
+  heading: 'Veritus Tech: infraestrutura de TI e desenvolvimento web',
+  description:
+    'Empresa de tecnologia especializada em infraestrutura de TI, suporte técnico e desenvolvimento web para pequenas e médias empresas. Estruturamos redes e servidores, mantemos ambientes estáveis e seguros e criamos sites, e-commerces e landing pages de alta conversão.',
+  services: [
+    'Infraestrutura de TI',
+    'Configuração de servidores',
+    'Suporte técnico remoto e presencial',
+    'Segurança da informação',
+    'Consultoria em TI',
+    'Desenvolvimento web',
+  ],
+  region: 'São Paulo e região',
+  coverage: 'Atendimento remoto para todo o Brasil e presencial em São Paulo e região.',
 };
 
 /* Menu do topo (desktop). O menu mobile mostra estes itens + os de `navExtra`,
