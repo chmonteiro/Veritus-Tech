@@ -6,18 +6,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#050d1a" />
 
-    <!-- SEO -->
-    <title>Veritus Tech | Soluções reais, resultados verdadeiros</title>
+    <!-- ==========================================================
+         SEO
+         Ao definir o domínio real, troque "https://veritustech.com.br"
+         aqui (canonical, og:url, JSON-LD) e em src/data/content.js (site.url).
+         ========================================================== -->
+    <title>Veritus Tech | Infraestrutura de TI e Desenvolvimento Web</title>
     <meta
       name="description"
-      content="A Veritus Tech estrutura, configura e mantém a infraestrutura de TI da sua empresa. Estabilidade, segurança e desempenho no dia a dia."
+      content="Infraestrutura de TI, suporte técnico e desenvolvimento web para pequenas e médias empresas. Redes, servidores, segurança e sites de alta conversão. Fale com um especialista."
     />
-    <meta property="og:title" content="Veritus Tech | Infraestrutura de TI" />
+    <link rel="canonical" href="https://veritustech.com.br/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="author" content="Veritus Tech" />
+
+    <!-- Local / geo -->
+    <meta name="geo.region" content="BR-SP" />
+    <meta name="geo.placename" content="São Paulo" />
+
+    <!-- Open Graph (compartilhamento em redes) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Veritus Tech" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:url" content="https://veritustech.com.br/" />
+    <meta property="og:title" content="Veritus Tech | Infraestrutura de TI e Desenvolvimento Web" />
     <meta
       property="og:description"
-      content="Soluções reais, resultados verdadeiros. Infraestrutura de TI para pequenas e médias empresas."
+      content="Infraestrutura de TI, suporte técnico e desenvolvimento web para pequenas e médias empresas. Soluções reais, resultados verdadeiros."
     />
-    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://veritustech.com.br/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Veritus Tech: Infraestrutura de TI e Desenvolvimento Web" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Veritus Tech | Infraestrutura de TI e Desenvolvimento Web" />
+    <meta
+      name="twitter:description"
+      content="Infraestrutura de TI, suporte técnico e desenvolvimento web para pequenas e médias empresas."
+    />
+    <meta name="twitter:image" content="https://veritustech.com.br/og-image.png" />
+
+    <!-- Dados estruturados: ajudam o Google a entender a empresa e a
+         exibir resultados ricos (nome, serviços, contato, área atendida). -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Veritus Tech",
+        "description": "Infraestrutura de TI, suporte técnico e desenvolvimento web para pequenas e médias empresas.",
+        "url": "https://veritustech.com.br/",
+        "image": "https://veritustech.com.br/og-image.png",
+        "email": "veritustech@gmail.com",
+        "telephone": "+55-11-97202-1478",
+        "priceRange": "$$",
+        "slogan": "Soluções reais, resultados verdadeiros",
+        "areaServed": [
+          { "@type": "City", "name": "São Paulo" },
+          { "@type": "Country", "name": "Brasil" }
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressRegion": "SP",
+          "addressCountry": "BR"
+        },
+        "sameAs": ["https://instagram.com/veritus_tech"],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Serviços",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Infraestrutura de TI" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Configuração de servidores" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Suporte técnico remoto e presencial" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Segurança da informação" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Consultoria em TI" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Desenvolvimento web" } }
+          ]
+        }
+      }
+    </script>
 
     <!-- Fontes: Sora (títulos), Instrument Sans (texto), JetBrains Mono (rótulos) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

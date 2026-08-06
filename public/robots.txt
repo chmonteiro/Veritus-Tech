@@ -1,0 +1,5 @@
+# Veritus Tech — permite indexação total e aponta o sitemap.
+User-agent: *
+Allow: /
+
+Sitemap: https://veritustech.com.br/sitemap.xml

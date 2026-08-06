@@ -9,12 +9,36 @@ import './Header.css';
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeId, setActiveId] = useState('');
 
   // Sombra sutil quando a página rola
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  // Acende na nav o link da seção que está na tela (scroll-spy).
+  // A faixa -45%/-55% mira o miolo da viewport, então a troca acontece
+  // quando a seção chega ao centro, não na borda.
+  useEffect(() => {
+    const sections = nav
+      .map((item) => document.getElementById(item.href.slice(1)))
+      .filter(Boolean);
+    if (!sections.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const onScreen = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        if (onScreen[0]) setActiveId(onScreen[0].target.id);
+      },
+      { rootMargin: '-45% 0px -55% 0px' }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -25,11 +49,19 @@ export default function Header() {
 
           {/* Navegação desktop */}
           <nav className="header__nav" aria-label="Navegação principal">
-            {nav.map((item) => (
-              <a key={item.href} href={item.href} className="header__link">
-                {item.label}
-              </a>
-            ))}
+            {nav.map((item) => {
+              const isActive = activeId === item.href.slice(1);
+              return (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className={`header__link ${isActive ? 'is-active' : ''}`}
+                  aria-current={isActive ? 'true' : undefined}
+                >
+                  {item.label}
+                </a>
+              );
+            })}
           </nav>
 
           <a {...externalLink} href={whatsappLink} className="btn btn--primary header__cta">
